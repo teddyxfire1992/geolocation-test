@@ -37,21 +37,15 @@ export default function Index() {
     /// 2. ready the plugin.
     BackgroundGeolocation.ready({
       // Geolocation Config
-      geolocation: {
-        desiredAccuracy: BackgroundGeolocation.DesiredAccuracy.High,
-        distanceFilter: 10,
-        stopTimeout: 5
-      },
+      desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
+      distanceFilter: 10,
+      stopTimeout: 5,
       // Logger Config
-      logger: {
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
-        logLevel: BackgroundGeolocation.LogLevel.Verbose
-      },
+      debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+      logLevel: BackgroundGeolocation.LOG_LEVEL_DEBUG,
       // Application config
-      app: {
-        stopOnTerminate: false,   // <-- Allow the background-service to continue tracking when user closes the app.
-        startOnBoot: true         // <-- Auto start tracking when device is powered-up.
-      },
+      stopOnTerminate: false,   // <-- Allow the background-service to continue tracking when user closes the app.
+      startOnBoot: true         // <-- Auto start tracking when device is powered-up.
     }).then((state) => {
       setEnabled(state.enabled)
       console.log("- BackgroundGeolocation is configured and ready: ", state.enabled);
